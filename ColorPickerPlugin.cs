@@ -6,6 +6,19 @@ using UnityEngine.Events;
 
 namespace LonelyZombie
 {
+    [BepInPlugin(Guid, Name, Version)]
+    [BepInDependency(LordAshes.FileAccessPlugin.Guid)]
+    public class ColorPickerPlugin : BaseUnityPlugin
+    {
+        public const string Name = "ColorPicker";
+        public const string Guid = "org.lonleyzombie.plugins.colorpicker";
+        public const string Version = "1.0.0.0";
+
+        public class ColorSelectEvent : UnityEvent<Color>
+        {
+        }
+
+    }
 
     public class ColorPickerWindowHandle : MonoBehaviour
     {
@@ -129,19 +142,5 @@ namespace LonelyZombie
             color_picker.GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);
             go_color_strip.GetComponent<ColorPicker>().resetSelectorPosition();
         }
-    }
-
-    [BepInPlugin(Guid, Name, Version)]
-    [BepInDependency(LordAshes.FileAccessPlugin.Guid)]
-    public class ColorPickerPlugin : BaseUnityPlugin
-    {
-        public const string Name = "ColorPicker";
-        public const string Guid = "org.lonleyzombie.plugins.colorpicker";
-        public const string Version = "1.0.0.0";
-
-        public class ColorSelectEvent : UnityEvent<Color>
-        {
-        }
-
     }
 }
